@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+
+{%block title%} Display list {%endblock%}
+
+{%block content%}
+
+<h1>Jinja variables: Lists</h1>
+<p>The below List is rendered using Jinja variables:</p>
+
+<ul>
+
+    {%for item in mylist%}
+
+        <li {%if item == 20 %} style = "color: red" {%endif%}>
+            {{ item }}
+        </li>
+
+    {%endfor%}
+
+</ul>
+
+{%endblock%}

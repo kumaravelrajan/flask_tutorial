@@ -1,0 +1,23 @@
+{%extends "base.html" %}
+
+{%block title%} Home page {%endblock%}
+
+{%block content%}
+<h1>Jinja variables</h1>
+<p>The below text is rendered using Jinja variables:</p>
+<p>{{hello_str}} {{world_str}} </p>
+
+<!-- Built in filters -->
+<p>{{(hello_str ~ " " ~ world_str) | upper}}</p>
+<p>{{(hello_str ~ " " ~ world_str) | lower}}</p>
+<p>{{(hello_str ~ " " ~ world_str) | reverse}}</p>
+<p>{{(hello_str ~ " " ~ world_str) | wordcount}}</p>
+
+<!-- Custom filter -->
+<p>{{(hello_str ~ " " ~ world_str) | title_case}}</p>
+
+<!-- Dynamic link to displaylist_template.html being served by displaylist() py function in app.py-->
+
+<a href="{{url_for("displayList_fun")}}">Click here to navigate to DisplayList site.</a>
+
+{%endblock%}
