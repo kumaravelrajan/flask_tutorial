@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+
+{%block title%}
+
+Home
+
+{%endblock%}
+
+{%block content%}
+
+<h1>GET and POST of form data to /</h1>
+
+<form action=" {{url_for('index')}} " method = "POST">
+    <input type="text" name="username" placeholder="Username"> <br>
+    <input type="password" name="password" placeholder="Password"> <br>
+    <input type="submit" value="Submit">
+</form>
+
+
+<h1>Upload Excel or text file</h1>
+
+<form action="{{url_for('file_upload')}}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".csv, .txt, .xls, .xlsx, text/plain, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+    <input type="submit" value="upload file">
+</form>
+
+{%endblock%}

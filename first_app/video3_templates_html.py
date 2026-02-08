@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, redirect
 
-app = Flask(__name__, template_folder="templates") #!
+app = Flask(__name__, template_folder="templates/video3") #!
 
 # --------------------------------------------------
 # Manipulating HTML templates using Jinja
