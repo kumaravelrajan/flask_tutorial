@@ -24,4 +24,42 @@ Home
     <input type="submit" value="upload file">
 </form>
 
+<h1>Convert Excel to CSV file</h1>
+
+<form action="{{url_for('convert_to_csv')}}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+    <input type="submit" value="Convert to CSV now!">
+</form>
+
+<h1>Convert Excel to CSV file and download from new page</h1>
+
+<form action="{{url_for('convert_to_csv_with_download_page')}}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+    <input type="submit" value="Convert to CSV now!">
+</form>
+
+<h1>Sending JSON data via POST using Javascript</h1>
+
+<button type="button" id="json_post_btn">Click here to submit JSON data to server.</button>
+
+<script type="text/javascript">
+    const json_post_btn_elem = document.getElementById('json_post_btn');
+    const json_data_to_send = {greeting: 'Hey there ', name: 'Kumar!'};
+
+    json_post_btn_elem.addEventListener(type='click', () => {
+        fetch('{{url_for("handle_js_post")}}', {
+            method: "POST",
+            headers: {
+                'Content-Type' : 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify(json_data_to_send)
+        })
+        .then(response => response.json())
+        .then(data => console.log(data['message']))
+        .catch(error => {
+            console.error("Error: ", error)
+        })
+    });
+</script>
+
 {%endblock%}
