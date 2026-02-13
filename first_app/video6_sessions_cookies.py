@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, render_template, session, flash
+from flask import Flask, request, make_response, render_template, session, flash, redirect, url_for
 
 app = Flask(__name__, template_folder='templates/video6', static_folder='static', static_url_path='/')
 app.secret_key = 'some_key'
@@ -57,10 +57,12 @@ def login():
     elif request.method == 'POST':
         if request.form.get('username') == 'kumar' and request.form.get('password') == 'kumar':
             flash('Successful login (sent via flash)!')
-            return render_template('index.html', message = 'Successful login (sent via index.html message)')
+            return redirect(url_for('index'))
+            # return render_template('index.html', message = 'Successful login (sent via index.html message)')
         else:
             flash('Login failed! (sent via flash)')
-            return render_template('index.html', message= 'Login failed (sent via index.html message)')
+            return redirect(url_for('index'))
+            # return render_template('index.html', message= 'Login failed (sent via index.html message)')
             
             
 
